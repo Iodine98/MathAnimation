@@ -1,11 +1,14 @@
 from manim import Text, WHITE, UP, DOWN, VGroup, Scene, MathTex, Arrow, Transform
 
 class PUnion(Scene):
+    """
+    Display the P-Union operation
+    """
     def create_title(self):
         title = Text("P-Union", color=WHITE)
         title.scale(0.75)
         self.add(title.to_edge(UP))
-    
+
     def create_first_eq(self):
         tex1_0 = MathTex(r"p(50) = ")
         tex1_1 = MathTex(r"p(5)")
@@ -25,7 +28,7 @@ class PUnion(Scene):
         left_arrow = Arrow(vertical_group[0][1].get_bottom(), eq_two[1].get_top())
         right_arrow = Arrow(vertical_group[0][3].get_bottom(), eq_two[3].get_top())
         return vertical_group + left_arrow + right_arrow
-    
+
     def create_vertical_group_two(self, eq_one, eq_two):
         vertical_group = VGroup(eq_one, eq_two).arrange(direction=DOWN, buff=2.0)
         center_arrow = Arrow(vertical_group[0].get_bottom(), vertical_group[1].get_top())
@@ -44,8 +47,3 @@ class PUnion(Scene):
         self.play(Transform(vertical_group_1, vertical_group_2))
         self.wait(5)
         self.clear()
-        
-       
-        
-       
-       
