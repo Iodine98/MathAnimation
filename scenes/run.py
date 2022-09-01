@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def run_file(filename: str) -> None:
-    call(["manim", "-pqh", Path(Path(__file__).parent.absolute(), filename)])
+    call(["manim", "-pql", Path(Path(__file__).parent.absolute(), filename)])
 
 
 def run() -> None:
