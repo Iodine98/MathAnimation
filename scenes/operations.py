@@ -1,3 +1,4 @@
+from run import run_file
 from manim import Text, WHITE, UP, DOWN, LEFT, ORIGIN, DR, VGroup, Scene
 
 class Operations(Scene):
@@ -11,10 +12,13 @@ class Operations(Scene):
         self.add(title.to_edge(UP))
 
     def create_list_of_operations(self):
-        text_one = Text("1. P-Union").set_color(WHITE)
-        text_two = Text("2. P-Intersection").set_color(WHITE)
-        text_three = Text("3. Subset").set_color(WHITE)
-        return VGroup(text_one, text_two, text_three) \
+        operation_texts = [
+            "1. P-Union",
+            "2. P-Intersection",
+            "3. Scaling"
+        ]
+        operation_texts = [Text(text).set_color(WHITE) for text in operation_texts]
+        return VGroup(*operation_texts) \
             .arrange(direction=DOWN, aligned_edge=LEFT) \
             .scale(0.7) \
             .next_to(ORIGIN,DR)\
@@ -28,5 +32,10 @@ class Operations(Scene):
 
     def construct(self):
         self.set_title()
-        self.animate_over_list(list_of_operations=self.create_list_of_operations())
-        self.clear()
+        ops = self.create_list_of_operations()
+        self.animate_over_list(list_of_operations=ops)
+        ops[-1].set_opacity(1)
+        self.wait(3)
+
+if __name__ == '__main__':
+    run_file("operations.py")

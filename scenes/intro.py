@@ -1,3 +1,4 @@
+from run import run_file
 from manim import Scene, Text, Write
 
 class Intro(Scene):
@@ -9,3 +10,6 @@ class Intro(Scene):
         self.play(Write(text))
         self.wait()
         self.clear()
+
+if __name__ == '__main__':
+    run_file("intro.py")
